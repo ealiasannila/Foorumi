@@ -1,22 +1,33 @@
+        
+
 <div class="page-header">
-  <h1>Rekisteröidy</h1>
+    <h1>Rekisteröidy</h1>
 </div>
 
-<form>
-  <div class="form-group">
-    <label>Käyttäjätunnus</label>
-    <input type="text" class="form-control">
-  </div>
+<form name='registerForm'>
+    <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input type="text" class="form-control" ng-model="registerUser.username" required>
+    </div>
 
-  <div class="form-group">
-    <label>Salasana</label>
-    <input type="text" class="form-control">
-  </div>
+    <div class="form-group">
+        <label>Salasana</label>
+        <input type="password" class="form-control"  name='registerUser.password' ng-model='registerUser.password' required>
+    </div>
 
-  <div class="form-group">
-    <label>Salasana uudelleen</label>
-    <input type="text" class="form-control">
-  </div>
-
-  <button class="btn btn-success">Rekisteröidy</button>
+    <div class="form-group" >
+        <label>Salasana uudelleen</label>
+        <input type="password" class="form-control" name="passwordAgain"  ng-model="passwordAgain" required>
+    </div>
+    <div ng-show="invalidPassword()  && registerForm.passwordAgain.$dirty">
+        Salasanat eivät täsmää!
+    </div>
+    <div ng-show="registerForm.passwordAgain.$error.match">Password do not match!</div>
+    <button ng-disabled='invalidPassword() || registerForm.$invalid' class="btn btn-success" ng-click="register()">Rekisteröidy</button>
 </form>
+
+
+
+<div ng-show='errorMessage'>
+    {{errorMessage}}
+</div>

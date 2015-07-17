@@ -1,17 +1,23 @@
 <div class="page-header">
-  <h1>Kirjaudu sisään</h1>
+    <h1>Kirjaudu sisään</h1>
 </div>
 
 <form>
-  <div class="form-group">
-    <label>Käyttäjätunnus</label>
-    <input type="text" class="form-control">
-  </div>
+    <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input type="text" class="form-control" ng-model='loginUser.username'>
+    </div>
 
-  <div class="form-group">
-    <label>Salasana</label>
-    <input type="text" class="form-control">
-  </div>
+    <div class="form-group">
+        <label>Salasana</label>
+        <input type="password" class="form-control" ng-model='loginUser.password' >
+    </div>
 
-  <button class="btn btn-primary">Kirjaudu sisään</button>
+    <button class="btn btn-primary" ng-click="login()">Kirjaudu sisään</button>
+
 </form>
+
+
+<div ng-show='errorMessage'>
+    {{errorMessage}}
+</div>
